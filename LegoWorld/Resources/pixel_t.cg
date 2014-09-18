@@ -1,0 +1,63 @@
+// Fragment Shader
+struct fragment {
+	float4 position;
+	float4 color0 : COLOR0;
+	float2 texcoord0 : TEXCOORD0;
+	float3 normal : TEXCOORD1;
+	float4 objectPos : TEXCOORD2;
+};
+
+struct pixel {
+	float4 color : COLOR;
+};
+
+pixel fs_main(
+	fragment IN, 
+	uniform float3 globalAmbient,
+	uniform float3 lightColor,
+	uniform float3 lightPosition,
+	uniform float3 eyePosition,
+	uniform float3 Ke,
+	uniform float3 Ka,
+	uniform float3 Kd,
+	uniform float3 Ks,
+	uniform float shininess,
+	uniform sampler2D testTexture )
+{
+	float3 P = IN.position.xyz;
+	float3 N = normalize(IN.normal);
+	// Compute the emissive term
+	float3 emissive = Ke;
+	//Compute the ambient term
+	float3 ambient = Ka * globalAmbient;
+	//Compute the diffuse term
+	float3 L = normalize(lightPosition - P);
+	float diffuseLight = max(dot(N, L), 0);
+	float3 diffuse = Kd * lightColor * diffuseLight;
+	// Compute the specular term
+	float3 V = normalize(eyePosition - P);
+	float3 H = normalize(L + V);
+	float specularLight = pow(max(dot(N, H), 0), shininess);
+	if (diffuseLight <= 0) {
+		specularLight = 0;
+	}
+	float3 specular = Ks * lightColor * specularLight;
+ 
+	pixel OUT;
+	float3 tex = tex2D(testTexture, IN.texcoord0).xyz;
+	float3 light = emissive + ambient + diffuse + specular;
+	float3 col = light * tex * IN.color0;
+/*	if (IN.color0.x < col.x) {
+		col.x = IN.color0.x;
+	}
+	if (IN.color0.y < col.y) {
+		col.y = IN.color0.y;
+	}
+	if (IN.color0.z < col.z) {
+		col.z = IN.color0.z;
+	}*/
+	
+	OUT.color.xyz = col;
+    OUT.color.w = 1.0;
+	return OUT;
+}

@@ -1,0 +1,19 @@
+// Fragment Shader
+float reverse;
+
+struct Output {
+	float3 color : COLOR;
+};
+
+Output fs_main(float2 texCoord : TEXCOORD0, uniform sampler2D decal : TEX0)
+{
+	Output OUT;
+	float3 color1 = tex2D(decal, texCoord);
+	if (reverse == 1.0f) {
+		OUT.color = float3(1.0f - color1.x, 1.0f - color1.y, 1.0f - color1.z);
+	} else {
+		OUT.color = color1;
+	}
+	
+	return OUT;
+}

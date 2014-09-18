@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7B1629F2-1DC6-42A6-99BE-C77A55457A4A}</ProjectGuid>
+    <RootNamespace>LegoWorld</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)/INCLUDE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)/LIB;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glaux.lib;odbc32.lib;odbccp32.lib;winmm.lib;cg.lib;cggl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/INCLUDE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)/LIB;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glaux.lib;odbc32.lib;odbccp32.lib;winmm.lib;cg.lib;cggl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\Debug\button_pixel_t.cg" />
+    <None Include="..\Debug\pixel_t.cg" />
+    <None Include="..\Debug\vertex_t.cg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\Global.h" />
+    <ClInclude Include="Common\ObjectBase.h" />
+    <ClInclude Include="Lego\CgShaderLight.h" />
+    <ClInclude Include="Lego\EyePosition.h" />
+    <ClInclude Include="Lego\LegoManager.h" />
+    <ClInclude Include="Models\MilkshapeModel.h" />
+    <ClInclude Include="Models\Model.h" />
+    <ClInclude Include="Models\ModelManager.h" />
+    <ClInclude Include="UI\UIButtonManager.h" />
+    <ClInclude Include="UI\UIControlButton.h" />
+    <ClInclude Include="UnitBlocks\LegoGround.h" />
+    <ClInclude Include="UnitBlocks\LegoSaber.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock1x1x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock1x2x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock2x1x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock2x2x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock3x1x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock3x1x2.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock4x1x1.h" />
+    <ClInclude Include="UnitBlocks\UnitBlock4x1x2.h" />
+    <ClInclude Include="UnitBlocks\UnitBlockBase.h" />
+    <ClInclude Include="Utility\TSControl.h" />
+    <ClInclude Include="Utility\Utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\Main.cpp" />
+    <ClCompile Include="Lego\CgShaderLight.cpp" />
+    <ClCompile Include="Lego\EyePosition.cpp" />
+    <ClCompile Include="Lego\LegoManager.cpp" />
+    <ClCompile Include="Models\MilkshapeModel.cpp" />
+    <ClCompile Include="Models\Model.cpp" />
+    <ClCompile Include="Models\ModelManager.cpp" />
+    <ClCompile Include="UI\UIButtonManager.cpp" />
+    <ClCompile Include="UI\UIControlButton.cpp" />
+    <ClCompile Include="UnitBlocks\LegoGround.cpp" />
+    <ClCompile Include="UnitBlocks\LegoSaber.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock1x1x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock1x2x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock2x1x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock2x2x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock3x1x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock3x1x2.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock4x1x1.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlock4x1x2.cpp" />
+    <ClCompile Include="UnitBlocks\UnitBlockBase.cpp" />
+    <ClCompile Include="Utility\TSControl.cpp" />
+    <ClCompile Include="Utility\Utility.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
